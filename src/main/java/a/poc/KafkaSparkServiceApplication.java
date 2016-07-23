@@ -25,10 +25,10 @@ public class KafkaSparkServiceApplication {
     private static String topics = "test";
     private static Duration batchInterval = Durations.seconds(2);
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         log.debug("Starting consumer...");
         kafkaConsumer();
-	}
+    }
 
     public static void kafkaConsumer() {
         SparkConf sparkConf = new SparkConf().setAppName("KafkaWordCount").setMaster("local[*]");
@@ -92,9 +92,8 @@ public class KafkaSparkServiceApplication {
     private static JavaDStream<String> extractLines(JavaPairInputDStream<String, String> messages) {
         return messages.map(new Function<Tuple2<String, String>, String>() {
             @Override
-            public String call(Tuple2<String, String> tuple2) throws InterruptedException {
+            public String call(Tuple2<String, String> tuple2) {
                 log.debug("Getting line... {}", tuple2);
-                Thread.sleep(1000);
                 return tuple2._2();
             }
         });
