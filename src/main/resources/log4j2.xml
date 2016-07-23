@@ -7,7 +7,7 @@
                 <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L- %X{sessionId}--%X{guid}- %m #]%n</pattern>
             </PatternLayout>
         </Console>
-        <Kafka name="Kafka" topic="test">
+        <Kafka name="Kafka" topic="test-logging-topic">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg"/>
             <Property name="bootstrap.servers">localhost:9092</Property>
         </Kafka>
